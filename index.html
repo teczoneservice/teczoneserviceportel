@@ -1,1 +1,584 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEC ZONE SERVICE</title>
+    <style>
+        /* Universal Box-Sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #FFFFFF; /* Changed page background color to white */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #0a3d62;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            flex-wrap: wrap;
+            min-height: 100px; /* Increased header minimum height to 100px */
+        }
+
+        .logo {
+            display: flex; /* Enable flexbox for logo and text */
+            align-items: center; /* Vertically align items */
+            gap: 10px; /* Space between logo image and text */
+        }
+
+        .logo img {
+            height: 50px; /* Adjusted logo image size for bigger header */
+            width: auto;
+        }
+
+        .logo h1 {
+            font-size: 2rem; /* Slightly increased font size for header title */
+        }
+
+        /* Navigation Styles */
+        nav {
+            margin-left: auto; /* Pushes nav to the right on larger screens */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        /* Hero Section (Image Slideshow) Styles */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            margin-top: 20px; /* Increased gap from the header to 20px */
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            animation: slideShow 25s infinite;
+        }
+
+        .hero img:nth-child(1) { animation-delay: 0s; }
+        .hero img:nth-child(2) { animation-delay: 5s; }
+        .hero img:nth-child(3) { animation-delay: 10s; }
+        .hero img:nth-child(4) { animation-delay: 15s; }
+        .hero img:nth-child(5) { animation-delay: 20s; }
+
+        @keyframes slideShow {
+            0% { opacity: 0; }
+            5% { opacity: 1; }
+            20% { opacity: 1; }
+            25% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* Services Section Styles */
+        .services {
+            padding: 60px 20px;
+            background-color: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Individual Service Card Styles */
+        .service-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Default shadow */
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+            padding: 20px; /* Ensure padding is consistent */
+            text-decoration: none; /* Remove underline from the card link */
+            color: inherit; /* Inherit text color */
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            background-color: #e0f2f7; /* Light blue on hover */
+            box-shadow: 0 4px 15px rgba(0, 0, 139, 0.5); /* Dark blue shadow on hover */
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #0a3d62;
+            text-align: left;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: #555;
+            flex-grow: 1;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        /* Style for the "Go to Portal" like links */
+        .service-card .service-link {
+            display: block;
+            margin-top: auto;
+            text-align: center;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 600;
+            padding-top: 10px;
+        }
+
+        .service-card .service-link:hover {
+            text-decoration: underline;
+        }
+
+        /* New style for sub-service links */
+        .sub-service-link {
+            color: #0891b2; /* Same color as main links */
+            text-decoration: underline; /* Underline to indicate clickability */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            font-weight: 600; /* Make it bold */
+        }
+
+        .sub-service-link:hover {
+            color: #07575b; /* Darker blue on hover */
+        }
+
+        /* Location Section Styles */
+        .location {
+            padding: 40px 20px;
+            background-color: #ecf0f1;
+            text-align: center;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        footer .left-contact {
+            text-align: left;
+        }
+
+        footer .social-media-footer {
+            text-align: right;
+        }
+
+        footer .social-media-footer a {
+            color: #fff;
+            margin-left: 15px;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        footer p {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* General Utility Styles (from original code) */
+        body {
+            font-family: 'Rajdhani', sans-serif; /* This seems to override 'Segoe UI' */
+        }
+        /* Removed .card-shadow as its properties are now integrated into .service-card:hover */
+        .btn-primary {
+            background-color: #0891b2;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #07575b;
+        }
+        .icon-circle {
+            background-color: #0891b2;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                min-height: auto; /* Allow height to adjust on mobile */
+            }
+
+            .logo {
+                flex-direction: column; /* Stack logo and text vertically on small screens */
+                gap: 5px;
+            }
+
+            .logo img {
+                height: 40px; /* Adjusted logo size for mobile */
+            }
+
+            .logo h1 {
+                font-size: 1.8rem; /* Adjusted font size for mobile header title */
+            }
+
+            nav {
+                margin-top: 15px; /* Added gap for navigation on smaller screens */
+                margin-left: 0; /* Reset margin-left for centering */
+                width: 100%; /* Ensure nav takes full width for centering */
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center; /* Center nav items when stacked */
+            }
+
+            .hero {
+                height: 250px; /* Smaller hero image on mobile */
+                margin-top: 15px; /* Adjusted gap for mobile */
+            }
+
+            .services {
+                padding: 30px 15px;
+            }
+
+            .service-cards {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+
+            .service-card {
+                padding: 15px;
+                min-height: auto; /* Allow height to adjust on mobile */
+            }
+
+            .service-card img {
+                height: 180px; /* Adjust image height for mobile cards */
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            footer .left-contact,
+            footer .social-media-footer {
+                text-align: center;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <!-- Add your logo image here -->
+            <img src="C:\Users\mrcyb\OneDrive\Desktop\JPG IMG FILE\teckzone.jpg" alt="TEC ZONE Logo">
+            <h1>TEC ZONE SERVICE</h1>
+        </div>
+        <!-- Main Navigation -->
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Image Slideshow -->
+    <section class="hero" id="home">
+        <img src="E:\all imprtent file heare\only on karan photo file\hd photo\maniya mela.png" alt="Slide 1">
+        <img src="E:\all imprtent file heare\only on karan photo file\hd photo\rasmika.jpg" alt="Slide 2">
+        <img src="E:\all imprtent file heare\only on karan photo file\Pictures\hero karan.jpg" alt="Slide 3">
+        <img src="E:\all imprtent file heare\only on karan photo file\relway.jpg" alt="Slide 4">
+        <img src="E:\all imprtent file heare\only on karan photo file\smaet.jpg" alt="Slide 5">
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="service-cards">
+            <!-- adhar service card -->
+            <a href="https://uidai.gov.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\adhar.jpeg" alt="Closeup of a person repairing a gadget circuit board with specialized tools focused on delicate parts" class="rounded-lg w-full h-44 object-cover" />
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
+                    <h3 class="font-semibold text-lg">Adhar dowanload</h3>
+                </div>
+                <p class="text-sm text-gray-600"> <span class="sub-service-link" data-link="https://eaadhar.uidai.gov.in/">adhar dowanload</span>, <span class="sub-service-link" data-link="https://uidai.gov.in/my-aadhaar/aadhaar-forms.html">form dowanload</span>, <span class="sub-service-link" data-link="https://myaadhaar.uidai.gov.in/check-aadhaar-status">check adhar stuas</span>, <span class="sub-service-link" data-link="https://myaadhaar.uidai.gov.in/verify-mobile-email">adhar mobile no chek</span>.</p>
+                <span class="service-link" data-link="https://uidai.gov.in">Learn More</span>
+            </a>
+
+            <!-- Service Card: voter service -->
+            <a href="https://voterportal.eci.gov.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\voter.jpeg" alt="Technician fixing a smartphone showing battery replacement and tiny intricate components inside mobile device" class="rounded-lg w-full h-44 object-cover" />
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 8l5 5-5 5"/></svg></span>
+                    <h3 class="font-semibold text-lg">Voter service</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://voterportal.eci.gov.in/form6">voter applay</span>, <span class="sub-service-link" data-link="https://voterportal.eci.gov.in/download-e-epic">dowanload</span>. <span class="sub-service-link" data-link="https://voterportal.eci.gov.in/form8">correction</span>, </p>
+                <span class="service-link" data-link="https://voterportal.eci.gov.in">Learn More</span>
+            </a>
+
+            <!-- Service Card: ration card service -->
+            <a href="https://nfsa.gov.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\ration.jpeg" />
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
+                    <h3 class="font-semibold text-lg">Ration service</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://nfsa.gov.in/portal/RationCard_Download">dowanload</span>, <span class="sub-service-link" data-link="https://nfsa.gov.in/portal/RationCard_MemberAdd">mamer add</span>, <span class="sub-service-link" data-link="https://nfsa.gov.in/portal/RationCard_KYC">chek ky-c</span>. <span class="sub-service-link" data-link="https://nfsa.gov.in/portal/RationCard_Status">stusts</span></p>
+                <span class="service-link" data-link="https://nfsa.gov.in">Learn More</span>
+            </a>
+
+            <!-- Service Card: pan service -->
+            <a href="https://www.onlineservices.nsdl.com/paam" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\nsdl.png" alt="Technician replacing desktop computer's cooling fan focusing on hardware and internal parts" class="rounded-lg w-full h-44 object-cover" />
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /></circle></svg></span>
+                    <h3 class="font-semibold text-lg">Pan service</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://www.onlineservices.nsdl.com/paam/endUserRegister.html">new pan</span>, <span class="sub-service-link" data-link="https://www.onlineservices.nsdl.com/paam/MPanLogin.html">dowanload</span>, <span class="sub-service-link" data-link="https://www.onlineservices.nsdl.com/paam/endUserRegister.html">correction</span>, <span class="sub-service-link" data-link="https://tin.tin.nsdl.com/pantan/StatusTrack.html">sutas</span>.</p>
+                <span class="service-link" data-link="https://www.onlineservices.nsdl.com/paam">Learn More</span>
+            </a>
+
+            <!-- Service Card:bhumi bihar -->
+            <a href="https://biharbhumi.bihar.gov.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\bhumibihar.png" alt="Technician using soldering iron to fix circuit board on a laptop computer closeup" class="rounded-lg w-full h-44 object-cover" />
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg></span>
+                    <h3 class="font-semibold text-lg">Bhumi bihar</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://biharbhumi.bihar.gov.in/Biharbhumi/ViewKhatiyan.aspx">khatiyan dowanload</span>,<span class="sub-service-link" data-link="https://biharbhumi.bihar.gov.in/Biharbhumi/MutationStatus.aspx">moutaion</span>,<span class="sub-service-link" data-link="https://biharbhumi.bihar.gov.in/Biharbhumi/RegistrationStatus.aspx">check registration</span>,</p>
+                <span class="service-link" data-link="https://biharbhumi.bihar.gov.in">Learn More</span>
+            </a>
+
+            <!-- Service Card: npdcl service-->
+            <a href="https://www.tsnpdcl.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\npdcl.png" alt="TEC Service Portal" class="mx-auto mb-4 w-full h-44 object-cover rounded-lg">
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+                    <h3 class="font-semibold text-lg">Electronic service</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://www.tsnpdcl.in/consumer/bill-status">check stutas</span>, <span class="sub-service-link" data-link="https://www.tsnpdcl.in/consumer/pay-bill">pay bill</span>, <span class="sub-service-link" data-link="https://www.tsnpdcl.in/consumer/download-receipt">dowanload recipt</span>.</p>
+                <span class="service-link" data-link="https://www.tsnpdcl.in">Learn More</span>
+            </a>
+
+             <!-- Service Card: RTPS service-->
+            <a href="https://serviceonline.bihar.gov.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\rtps.jpg" alt="TEC Service Portal" class="mx-auto mb-4 w-full h-44 object-cover rounded-lg">
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+                    <h3 class="font-semibold text-lg">RTPS service</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://serviceonline.bihar.gov.in/resources/applyServices">applay cast sertifecate</span>, <span class="sub-service-link" data-link="https://serviceonline.bihar.gov.in/resources/trackApplication">check stutas</span>, <span class="sub-service-link" data-link="https://serviceonline.bihar.gov.in/resources/downloadCertificate">dowanload</span>.</p>
+                <span class="service-link" data-link="https://serviceonline.bihar.gov.in">Learn More</span>
+            </a>
+
+             <!-- Service Card: Labour card services-->
+            <a href="https://labour.gov.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\loborcardlogo.jpeg" alt="TEC Service Portal" class="mx-auto mb-4 w-full h-44 object-cover rounded-lg">
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+                    <h3 class="font-semibold text-lg">Labour card services</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://labour.gov.in/new-registration">new applay</span>, <span class="sub-service-link" data-link="https://labour.gov.in/download-card">dowanloan</span>, <span class="sub-service-link" data-link="https://labour.gov.in/check-status">check stutas</span>, </p>
+                <span class="service-link" data-link="https://labour.gov.in">Learn More</span>
+            </a>
+
+
+             <!-- Service Card: e sharm card services-->
+            <a href="https://eshram.gov.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\esharmlogo.png" alt="TEC Service Portal" class="mx-auto mb-4 w-full h-44 object-cover rounded-lg">
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+                    <h3 class="font-semibold text-lg">E-shamr service</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://eshram.gov.in/register">new applay</span>, <span class="sub-service-link" data-link="https://eshram.gov.in/download-card">dowanloan</span>, <span class="sub-service-link" data-link="https://eshram.gov.in/check-status">check stutas</span>, </p>
+                <span class="service-link" data-link="https://eshram.gov.in">Learn More</span>
+            </a>
+
+
+              <!-- Service Card:aayusman card services-->
+            <a href="https://pmjay.gov.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\aaysman.png" alt="TEC Service Portal" class="mx-auto mb-4 w-full h-44 object-cover rounded-lg">
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+                    <h3 class="font-semibold text-lg">Auysman card service</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://pmjay.gov.in/new-registration">new applay</span>, <span class="sub-service-link" data-link="https://pmjay.gov.in/download-card">dowanloan</span>, <span class="sub-service-link" data-link="https://pmjay.gov.in/check-status">check stutas</span>, </p>
+                <span class="service-link" data-link="https://pmjay.gov.in">Learn More</span>
+            </a>
+
+
+
+                <!-- Service Card:sarkari result services-->
+            <a href="https://www.sarkariresult.com" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\sarkari.jpeg" alt="TEC Service Portal" class="mx-auto mb-4 w-full h-44 object-cover rounded-lg">
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+                    <h3 class="font-semibold text-lg">Auysman card service</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://www.sarkariresult.com/apply-online/">aplay form</span>,<span class="sub-service-link" data-link="https://www.sarkariresult.com/latest-jobs/">gov job form</span>,<span class="sub-service-link" data-link="https://www.sarkariresult.com/admissions/">education form</span> </p>
+                <span class="service-link" data-link="https://www.sarkariresult.com">Learn More</span>
+            </a>
+
+
+            
+                <!-- Service Card:ceo bihar services-->
+            <a href="https://ceobihar.nic.in" target="_blank" class="service-card bg-white rounded-lg shadow-lg p-6 space-y-4 hover:shadow-cyan-400 transition">
+                <div class="mb-2">
+                    <img src="C:\Users\mrcyb\OneDrive\Desktop\csc img\voterlogo.png" alt="TEC Service Portal" class="mx-auto mb-4 w-full h-44 object-cover rounded-lg">
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="icon-circle"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+                    <h3 class="font-semibold text-lg">CEO BIHAR</h3>
+                </div>
+                <p class="text-sm text-gray-600"><span class="sub-service-link" data-link="https://ceobihar.nic.in/SearchERoll.aspx">check recod 2003,2014, 2025</span> <span class="sub-service-link" data-link="https://ceobihar.nic.in/SearchERoll.aspx">name on voter list</span> , </p>
+                <span class="service-link" data-link="https://ceobihar.nic.in">Learn More</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="contact">
+        <h2>Location</h2>
+        <p>Address details or embed a map here.</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="left-contact">
+            <p>📞 Call Now | 💬 WhatsApp | ✉️ Contact</p>
+        </div>
+        <div class="social-media-footer">
+            <a href="https://instagram.com" target="_blank">📸 Instagram</a>
+            <a href="https://facebook.com" target="_blank">📘 Facebook</a>
+        </div>
+        <p>© 2025 TEC ZONE SERVICE. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for handling sub-service links and "Learn More" links -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subServiceLinks = document.querySelectorAll('.sub-service-link');
+            const learnMoreLinks = document.querySelectorAll('.service-card .service-link'); // Select "Learn More" links within cards
+
+            subServiceLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Stop event from bubbling up to the parent card link
+                    event.preventDefault(); // Prevent default action if it's an <a> tag
+
+                    const url = this.dataset.link;
+                    if (url) {
+                        window.open(url, '_blank'); // Open in a new tab
+                    }
+                });
+            });
+
+            learnMoreLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Stop event from bubbling up to the parent card link
+                    // The parent card is already an <a> tag, so this link's href will be used.
+                    // If you want this "Learn More" link to open a *different* URL than the card,
+                    // you would need to add a data-link attribute to it and use window.open(this.dataset.link, '_blank');
+                    // For now, it will open the same URL as the parent card.
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
